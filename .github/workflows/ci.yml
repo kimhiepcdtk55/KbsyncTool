@@ -24,7 +24,7 @@ jobs:
       ### Pre-init
       ################################################
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive  
@@ -43,7 +43,7 @@ jobs:
 
       - name: Theos Setup (Use Cache)
         id: cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/theos
           key: ${{ runner.os }}-${{ steps.verify-cache.outputs.heads }}
@@ -85,7 +85,7 @@ jobs:
           make package _THEOS_DARWIN_CAN_USE_MODULES=0 FINALPACKAGE=1
       
       - name: Publish artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: kbsynctool
           path: ${{ github.workspace }}/packages/*.deb
